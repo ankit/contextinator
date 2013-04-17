@@ -1,0 +1,43 @@
+.email {
+  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+  float: left;
+  clear: both;
+  font-weight: 300;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+.email a:hover {
+  text-decoration: none;
+}
+.email:hover {
+  background-color: #efefef;
+}
+.email:hover .email-title {
+  color: #333;
+}
+.email .email-title {
+  float: left;
+  width: 100%;
+  font-weight: bold;
+}
+.email .email-summary {
+  color: #333;
+  text-decoration: none;
+}
+.email .email-meta {
+  text-align: right;
+}
+.email .email-meta .email-author-name {
+  float: left;
+  font-weight: 500;
+  color: #555;
+}
+.email .email-meta:hover {
+  text-decoration: underline;
+}
+.email:last-of-type {
+  border-bottom: none;
+}

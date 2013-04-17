@@ -1,0 +1,194 @@
+<html>
+<head>
+  <title>Loading...</title>
+
+  <link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+
+  <link rel="stylesheet" type="text/css" href="../utils/tasks/tasks.css">
+  <link rel="stylesheet" type="text/css" href="../utils/email/email.css">
+
+  <link rel="stylesheet" type="text/css" href="../jumper/jumper.css">
+  <link rel="stylesheet" type="text/css" href="home.css">
+
+  <script type="text/javascript" src="../lib/underscore.js"></script>
+  <script type="text/javascript" src="../lib/jquery.js"></script>
+  <script type="text/javascript" src="../lib/handlebars.js"></script>
+  <script type="text/javascript" src="../lib/bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="../lib/moment.js"></script>
+
+  <script type="text/javascript" src="../utils/tasks/templates/task.js"></script>
+  <script type="text/javascript" src="../utils/tasks/templates/addTask.js"></script>
+  <script type="text/javascript" src="../utils/tasks/tasks.js"></script>
+  <script type="text/javascript" src="../utils/projects.js"></script>
+  <script type="text/javascript" src="../utils/email/templates/email.js"></script>
+  <script type="text/javascript" src="../utils/email/gmail.js"></script>
+  <script type="text/javascript" src="../utils/windows.js"></script>
+  <script type="text/javascript" src="../utils/browser-action-icon.js"></script>
+  <script type="text/javascript" src="../utils/bookmarks.js"></script>
+
+  <script type="text/javascript" src="../jumper/templates/project.js"></script>
+  <script type="text/javascript" src="../jumper/templates/new.js"></script>
+  <script type="text/javascript" src="../jumper/templates/overview.js"></script>
+  <script type="text/javascript" src="../jumper/jumper.js"></script>
+
+  <script type="text/javascript" src="templates/app.js"></script>
+  <script type="text/javascript" src="templates/tab.js"></script>
+  <script type="text/javascript" src="templates/bookmark.js"></script>
+  <script type="text/javascript" src="people/templates/person.js"></script>
+  <script type="text/javascript" src="people/people.js"></script>
+
+  <script type="text/javascript" src="home.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">Home - </a>
+          <button class="btn close-btn">Close</button>
+          <button class="btn delete-btn btn-danger">Remove</button>
+          <div class="pull-right">
+            <button class="btn show-overview-btn">Projects Overview</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="nav nav-list span2">
+      <li class="active">
+        <a class="show-section" data-name="tasks" href="#">
+          Tasks
+          (<span class="tasks-count"></span>)
+        </a>
+      </li>
+      <li>
+        <a class="show-section" data-name="email" href="#">
+          Email
+          (<span class="emails-count"></span>)
+        </a>
+      </li>
+      <li>
+        <a class="show-section" data-name="people" href="#">
+          People
+          (<span class="people-count"></span>)
+        </a>
+      </li>
+      <li>
+        <a class="show-section" data-name="bookmarks" href="#">
+          Bookmarks
+          (<span class="bookmarks-count"></span>)
+        </a>
+      </li>
+      <li>
+        <a class="show-section" data-name="tabs" href="#">
+          Tabs
+          (<span class="tabs-count"></span>)
+        </a>
+      </li>
+      <hr>
+      <h4>Apps <a class="show-section" style="font-size: 14px; font-weight: normal; margin-top: 1px" data-name="apps" href="#">
+        Edit
+      </a>
+      </h4>
+      <div class="description no-apps hide">
+        Add apps to see shortcuts to them here
+      </div>
+      <a data-key="gmail" class="hide app-shortcut" href="http://gmail.com" target="_blank">Gmail</a>
+      <a data-key="dropbox" class="hide app-shortcut" href="http://dropbox.com" target="_blank">Dropbox</a>
+      <a data-key="evernote" class="hide app-shortcut" href="http://evernote.com" target="_blank">Evernote</a>
+      <a data-key="googledrive" class="hide app-shortcut" href="https://drive.google.com" target="_blank">Google Drive</a>
+      <a data-key="trello" class="hide app-shortcut" href="http://trello.com" target="_blank">Trello</a>
+    </ul>
+    <div class="content">
+      <div class="span5 tasks-section project-section">
+        <h3>
+          Tasks
+          <button class="btn-danger btn btn-small pull-right remove-completed-tasks">Remove Completed</button>
+        </h3>
+        <div class="tasks-container">
+          <ul class="tasks">
+            <p class="lead">Loading...</p>
+          </ul>
+        </div>
+      </div>
+
+      <div class="span5 email-section project-section hide">
+        <h3>
+          Email
+          <div class="description">Unread emails with the label for this project (set Gmail in Apps) or from people in this project</div>
+        </h3>
+
+        <p class="emails-status lead">Loading...</p>
+        <ul class="emails">
+        </ul>
+      </div>
+
+      <div class="span5 apps-section project-section hide">
+        <h3>
+          Apps
+          <div class="description">
+            Set this project's views for the following apps. When you visit an app, we will automatically direct you to this project's view
+          </div>
+        </h3>
+        <ul class="apps">
+          <li class="app">
+            <div class="app-container">
+              <a data-key="gmail" class="app-name" href="http://gmail.com" target="_blank">Gmail</a>
+              <input data-key="gmail" type="text" value="" class="app-url">
+              <div class="app-description">e.g. https://mail.google.com/mail/u/0/#label/label_name</div>
+            </div>
+          </li>
+          <li class="app">
+            <div class="app-container">
+              <a class="app-name" href="http://dropbox.com" target="_blank">Dropbox</a>
+              <input data-key="dropbox" type="text" value="" class="app-url">
+              <div class="app-description">e.g. https://www.dropbox.com/home/path_to_folder</div>
+            </div>
+          </li>
+          <li class="app">
+            <div class="app-container">
+              <a data-key="evernote" class="app-name" href="http://evernote.com" target="_blank">Evernote</a>
+              <input data-key="evernote" type="text" value="" class="app-url">
+              <div class="app-description">e.g. https://www.evernote.com/Home.action#ns=folder_name</div>
+            </div>
+          </li>
+          <li class="app">
+            <div class="app-container">
+              <a data-key="googledrive" class="app-name" href="https://drive.google.com" target="_blank">Google Drive</a>
+              <input data-key="googledrive" type="text" value="" class="app-url">
+              <div class="app-description">e.g. https://drive.google.com/#folders/folder_key</div>
+            </div>
+          </li>
+          <li class="app">
+            <div class="app-container">
+              <a data-key="trello" class="app-name" href="http://trello.com" target="_blank">Trello</a>
+              <input data-key="trello" type="text" value="" class="app-url">
+              <div class="app-description">e.g. https://trello.com/board/board_name/board_key</div>
+            </div>
+          </li>
+        </ul>
+        <button class="btn btn-primary btn-small save-apps pull-right">Save Changes</button>
+      </div>
+
+      <div class="span5 project-section people-section hide">
+        <h3>People <div class="description">Add people's emails to see unread emails from them</div></h3>
+        <input type="text" class="add-person" placeholder="Enter Person's Email...">
+        <ul class="people">
+        </ul>
+      </div>
+
+      <div class="span8 bookmarks-section project-section hide">
+        <h3>Bookmarks</h3>
+        <p class="bookmarks-status lead">Loading...</p>
+        <ul class="bookmarks">
+        </ul>
+      </div>
+
+      <div class="span5 project-section tabs-section hide">
+        <h3>Tabs</h3>
+        <ul class="tabs">
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

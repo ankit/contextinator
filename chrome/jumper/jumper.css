@@ -1,0 +1,113 @@
+/** Jumper **/
+#contextinator-jumper {
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 50000 !important;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: none;
+}
+#contextinator-jumper .contextinator-projects {
+  background: #eee !important;
+  border: 1px solid #ccc;
+  font-family: Helvetica !important;
+  font-size: 15px !important;
+  font-weight: 300 !important;
+  height: auto;
+  min-height: 50% !important;
+  position: fixed !important;
+  left: 5% !important;
+  overflow-x: hidden !important;
+  top: 10% !important;
+  width: 90% !important;
+}
+#contextinator-jumper img.contextinator-thumbnail {
+  display: block;
+  height: 94px;
+  width: 150px;
+  border: none;
+}
+#contextinator-jumper .contextinator-project {
+  background: #fefefe;
+  color: #333;
+  cursor: pointer;
+  float: left;
+  font-size: 15px !important;
+  position: relative;
+  word-wrap: break-word;
+  padding: 7px 10px;
+  line-height: 20px;
+  margin: 0px;
+  text-align: left;
+  height: 120px !important;
+  width: 150px;
+  opacity: 0.4;
+  margin: 5px;
+  border: 1px solid #ccc;
+}
+#contextinator-jumper .contextinator-project .contextinator-project-name {
+  color: #333;
+  font-weight: 300;
+  font-size: 13px;
+  text-align: center;
+  width: 100%;
+  padding: 1px 0;
+  z-index: 1000;
+  margin-top: 5px;
+}
+#contextinator-jumper .contextinator-project:focus {
+  outline: none;
+}
+#contextinator-jumper .contextinator-project.contextinator-hover {
+  background: #91BD83;
+  color: #fff;
+  opacity: 1;
+}
+#contextinator-jumper .contextinator-project.contextinator-hover .contextinator-project-name {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 20px;
+}
+#contextinator-jumper .contextinator-project.contextinator-new,
+#contextinator-jumper .contextinator-project.contextinator-overview {
+  opacity: 1;
+  border: 1px solid #ccc;
+}
+#contextinator-jumper .contextinator-project.contextinator-overview,
+#contextinator-jumper .contextinator-project.contextinator-new {
+  background-color: #fefefe;
+  color: #333;
+}
+#contextinator-jumper .contextinator-project.contextinator-overview.contextinator-hover,
+#contextinator-jumper .contextinator-project.contextinator-new.contextinator-hover {
+  background-color: #E6E6E6;
+}
+#contextinator-jumper .contextinator-project.contextinator-open {
+  opacity: 1;
+}
+#contextinator-jumper .contextinator-project .contextinator-close {
+  background: #eee;
+  border: 1px solid #ccc;
+  top: 9px;
+  right: 12px;
+  position: absolute;
+  width: 22px;
+  height: 20px;
+  padding-left: 3px;
+  padding-top: 4px;
+}
+#contextinator-jumper .contextinator-project .contextinator-close-icon {
+  -webkit-transition: .15s opacity;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAOVBMVEX///8FBQUGBgYDAwMDAwMDAwMGBgYGBgYFBQUAAAAFBQUAAAAEBAQDAwMDAwMDAwMDAwMDAwMAAABMcPQTAAAAE3RSTlMACwsPERIzNzk9PUZGSUxNT1dZm90FQAAAAFlJREFUGFedjEsOwCAIRFWoUvx7/8NWTLHdtrMgeS/DGPMvA+UeY3NLMLnXeAtMxIC9sNUKcOCc2SkvQ/Rig5m83w+yJ4Lg4cLOUmA1o8re3Dm1Etc7bP6YC1LBAmMNPdFwAAAAAElFTkSuQmCC") no-repeat;
+  height: 16px;
+  width: 20px;
+  float: right;
+}
+#contextinator-jumper .contextinator-project .contextinator-close-icon:hover {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAQlBMVEX///////////97e3t5eXlqampoaGhnZ2dgYGBcXFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuQipPAAAAFnRSTlMAIDZPUFtdXmVpgIiMlqivtri60NLWYRh4wAAAAGlJREFUGNONTkkSgCAMs4gs0gBu//+qZRyq40VzSdvJ0mH4AzL0IBniEUhJYI41e6K4L9lcipAZLmwVtns8EkrBSJrqkJjvXUyF59negri1A09au1eMlhNcr10kjyZJ1tpml2Stfb3+gRPyMAOM6OD34wAAAABJRU5ErkJggg==");
+}
+#contextinator-jumper .contextinator-project .contextinator-close-icon:active {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAADFBMVEUAAAD///8AAAAAAADI23cLAAAABHRSTlMAAD7MYITzfAAAADJJREFUCNdjCAUCBgQR9oB7KkP4D/2rDGH/9k9lCNn/T5QhRP8HjABxwRIQJSDFqAYAAIjXHQebFIiyAAAAAElFTkSuQmCC");
+}

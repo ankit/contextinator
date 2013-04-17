@@ -1,0 +1,22 @@
+<div class="project" data-project="{{project.name}}">
+  <h4>
+    {{project.name}}
+    <span class="unread-count">(<span class="tasks-unread-count" data-name="{{project.name}}">{{incompleteTasksCount}}</span>)</span>
+
+    <div class="pull-right actions-container">
+      {{#if lastAccessed}}<span class="time">{{lastAccessed}}</span>{{/if}}
+      <div class="hide actions">
+        <button class="btn btn-small btn-info open-project" data-project="{{project.name}}">Go to Homepage</button>
+        <button class="btn btn-small btn-danger delete-project" data-project="{{project.name}}">Remove</button>
+      </div>
+    </div>
+  </h4>
+
+  <div class="tasks-container">
+    <ul class="tasks">
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+  </div>
+</div>

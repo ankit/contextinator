@@ -1,0 +1,22 @@
+<div class="project" id="project{{index}}">
+  <h4>
+    {{project.name}}
+    <span class="unread-count">({{emailCount}})</span>
+
+    <div class="pull-right actions-container">
+      {{#if lastAccessed}}<span class="time">{{lastAccessed}}</span>{{/if}}
+      <div class="hide actions">
+        <button class="btn btn-small btn-info open-project" data-project="{{project.name}}">Go to Homepage</button>
+        <button class="btn btn-small btn-danger delete-project" data-project="{{project.name}}">Remove</button>
+      </div>
+    </div>
+  </h4>
+
+  <div class="emails-container">
+    <ul class="emails">
+      {{#each emails}}
+        {{> email}}
+      {{/each}}
+    </ul>
+  </div>
+</div>

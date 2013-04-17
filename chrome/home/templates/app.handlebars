@@ -1,0 +1,11 @@
+<li class="app">
+  <div class="app-container">
+    {{#if value}}
+      <a href="{{value}}" target="_blank">{{name}}</a>
+    {{else}}
+    <span>{{name}}</span>
+    {{/if}}
+    <br>
+    <input data-key="{{key}}" type="text" value="{{value}}" class="app-url">
+  </div>
+</li>

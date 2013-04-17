@@ -1,0 +1,6 @@
+source 'http://rubygems.org'
+# Guard
+gem 'guard'
+gem 'guard-handlebars'
+gem 'rb-fsevent'
+gem 'guard-less'

@@ -1,0 +1,20 @@
+#contextinator-bar {
+  position: fixed !important;
+  background: #333 !important;
+  color: #ccc !important;
+  font-family: "Helvetica Neue" !important;
+  font-size: 15px !important;
+  padding: 5px 10px !important;
+  top: 0px !important;
+  height: 20px !important;
+  width: 100%;
+  z-index: 30000 !important;
+}
+#contextinator-bar a {
+  margin-left: 5px !important;
+  color: #ccc;
+}
+#contextinator-bar a.contextinator-bar-project {
+  font-weight: bold !important;
+  color: #fff !important;
+}

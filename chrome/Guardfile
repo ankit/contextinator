@@ -1,0 +1,15 @@
+# Example guardfile for guard-templates
+#
+# by default, output to a single .js file in public/javascript/templates.js
+# if you'd like to compile each template to an individual .js file,
+# change :output to a directory path instead
+#
+# see https://github.com/thegreatape/guard-templates for more options
+
+guard 'handlebars' do
+  watch(%r{templates/(.+\.handlebars)})
+end
+
+guard 'less', :all_on_start => true, :all_after_change => true do
+  watch(%r{^.+\.less$})
+end

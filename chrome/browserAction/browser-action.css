@@ -1,0 +1,54 @@
+body {
+  padding: 0 20px;
+  padding-bottom: 20px;
+}
+.browser-action {
+  min-width: 420px;
+  min-height: 500px;
+}
+.browser-action .popup {
+  width: 480px;
+}
+.browser-action .project-popup {
+  width: 420px;
+}
+.browser-action .lead {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+.browser-action .header {
+  margin-top: 5px;
+  margin-left: 0 !important;
+}
+.browser-action .project {
+  margin: 0 auto;
+  margin-bottom: 4px;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 24px;
+}
+.browser-action .project a {
+  color: #ccc !important;
+}
+.browser-action .project.open a {
+  color: #0088cc !important;
+}
+.browser-action .projects {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.browser-action input.url {
+  display: none;
+}
+h3 {
+  font-size: 22px;
+}
+.span4 {
+  width: 180px;
+}
+.active {
+  color: green;
+  font-style: italic;
+}

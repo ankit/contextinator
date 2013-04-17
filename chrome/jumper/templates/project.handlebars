@@ -1,0 +1,12 @@
+]<div data-name="{{project.name}}" {{#if project.id}}data-id={{project.id}}{{/if}} {{#if id}}id="{{id}}"{{/if}} class="{{#if open}}contextinator-open{{/if}} contextinator-project" tabIndex=0>
+  <img class="contextinator-thumbnail" src="{{project.thumbnail}}"></img>
+  <div class="contextinator-project-name">
+    {{project.name}}
+  </div>
+
+  {{#if open}}
+    <div title="Close this project" class="contextinator-close">
+      <div class="contextinator-close-icon"></div>
+    </div>
+  {{/if}}
+</div>

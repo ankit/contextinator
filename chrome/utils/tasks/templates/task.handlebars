@@ -1,0 +1,19 @@
+<li {{#if url}}title="{{url}}"{{/if}} class="task {{#if completed}}completed{{/if}}{{#if flagged}} flagged{{/if}}" data-id="{{id}}">
+  <input data-id="{{id}}" class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
+  <div class="task-content">
+    <div class="task-name {{#if url}}link{{/if}}">{{name}}</div>
+    {{#if url}}
+      <a href="#" class="task-url">{{url}}</a>
+    {{/if}}
+    {{#if notes}}
+      <div class="task-notes">{{notes}}</div>
+    {{/if}}
+  </div>
+
+  <div class="controls">
+    <a title="Remove" href="#" data-id="{{id}}" class="control close"></a>
+    <a title="{{#if flagged}}Unflag{{else}}Flag{{/if}}" href="#" data-id="{{id}}" class="control flag" data-value="{{flagged}}">
+      <i class="icon-flag"></i>
+    </a>
+  </div>
+</li>

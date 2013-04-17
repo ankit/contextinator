@@ -1,0 +1,78 @@
+{
+  "name": "Contextinator",
+  "version": "0.3.6",
+  "manifest_version": 2,
+  "description": "Browse the Internets around your projects",
+
+  "background": {
+    "scripts": [
+      "lib/jquery.js",
+      "lib/underscore.js",
+
+      "utils/windows.js",
+      "utils/browser-action-icon.js",
+      "utils/bookmarks.js",
+
+      "background/contextmenu.js",
+      "background/windows.js",
+      "background/apps.js",
+      "background/background.js"
+    ],
+
+    "persistent": false
+  },
+
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+
+    "js": [
+      "lib/underscore.js",
+      "lib/jquery.js",
+      "lib/handlebars.js",
+
+      "utils/browser-action-icon.js",
+      "utils/windows.js",
+      "utils/projects.js",
+
+      "jumper/templates/project.js",
+      "jumper/templates/new.js",
+      "jumper/templates/overview.js",
+      "content/templates/bar.js",
+
+      "jumper/jumper.js",
+      "content/content.js"
+    ],
+
+    "css": [
+      "lib/dropdown.css",
+      "jumper/jumper.css",
+      "content/content.css"
+    ],
+
+    "run_at": "document_start",
+    "all_frames": false
+  }],
+
+  "browser_action": {
+    "default_title": "Contextinator",
+    "default_popup": "browserAction/browser-action.html",
+    "default_icon": "images/icon19.png"
+  },
+
+  "permissions": [
+    "storage",
+    "tabs",
+    "contextMenus",
+    "bookmarks",
+    "http://*/",
+    "https://*/",
+    "unlimitedStorage",
+    "webNavigation"
+  ],
+
+  "icons": {
+    "128": "images/icon128.png",
+    "48": "images/icon48.png",
+    "16": "images/icon16.png"
+  }
+}

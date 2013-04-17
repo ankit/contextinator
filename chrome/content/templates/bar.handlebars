@@ -1,0 +1,10 @@
+<div id="contextinator-bar">
+  Active Project:
+  {{#if project}}
+    <a href="#" title="Refresh this app's view for {{project.name}}" class="contextinator-bar-project">{{project.name}}</a>
+    <a href="#" class="contextinator-bar-save">Set this as the project view</a>
+    <a href="#" class="contextinator-bar-clear">Reset project view</a>
+  {{else}}
+    <span>None</span>
+  {{/if}}
+</div>

@@ -1,0 +1,19 @@
+<div class="tasks-header">
+  <div class="row-fluid">
+    <div class="span3 name-container">
+      <input type="text" class="name" placeholder="Add a new task...">
+    </div>
+  </div>
+
+  <form class="add-task-controls form-inline">
+    <input type="text" class="url" placeholder="Add a URL for the task...">
+    <textarea class="notes" name="notes" placeholder="Notes..."></textarea>
+    <div class="task-actions">
+      <button class="add-task btn btn-small btn-primary">Save</button>
+      <button class="cancel-task btn btn-small">Cancel</button>&nbsp;&nbsp;
+      <label class="checkbox include-tab-label">
+        <input class="include-tab" {{#if checkSaveCurrentTab}}checked{{/if}} type="checkbox"> Save Current Tab
+      </label>
+    </div>
+  </form>
+</div>

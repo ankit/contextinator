@@ -1,0 +1,39 @@
+<div class="popup {{#if project}}project-popup{{/if}}">
+  {{#if project}}
+    <h3>
+     {{project.name}}
+      <div>
+        <button class="btn btn-info home-btn">Go to Homepage</button>
+        <button class="bookmark btn btn-success">Bookmark This Tab</button>
+        <button class="show-tasks-btn btn btn-primary">Add Task</button>
+      </div>
+    </h3>
+    <div class="tasks-container hide">
+      <ul class="tasks">
+        <p class="lead">Loading...</p>
+      </ul>
+    </div>
+  {{else}}
+    <h3>You're not in a project.</h3>
+    <a class="create-new-window btn btn-success" href="#">New Project</a>
+    <a class="create-this-window btn btn-success" href="#">New Project For This Window</a>
+    <a class="overview btn" href="#">Projects Overview</a>
+  {{/if}}
+  <div class="row projects-list">
+    <div class="span5">
+      <p class="lead">Switch to another Project:</p>
+      <ul class="projects">
+        {{#each projects}}
+          <li class="{{#if open}}open{{/if}} project">
+            <a title="Go to this project" href="#" class="project-name" data-id="{{id}}" data-project="{{name}}">
+              {{name}}
+              {{#if current}}
+                <span class="active">(active)</span>
+              {{/if}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

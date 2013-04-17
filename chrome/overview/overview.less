@@ -1,0 +1,168 @@
+.navbar {
+  .brand {
+    color: #eee;
+  }
+}
+
+.nav-list {
+  margin-left: 20px;
+}
+
+.project {
+  clear: both;
+  float: left;
+  width: 500px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  .actions-container {
+    position: relative;
+    width: 200px;
+    text-align: right;
+  }
+
+  .actions {
+    position: absolute;
+    top: 0;
+    left: -5;
+    width: 200px;
+
+    &.disabled {
+      left: -80px;
+      width: 275px;
+    }
+  }
+
+  .time {
+    color: #888;
+    font-size: 14px;
+    display: inline;
+    font-style: italic;
+    margin-right: 10px;
+    line-height: 24px;
+  }
+
+  &:hover {
+    .actions {
+      display: block;
+    }
+
+    .time {
+      display: none;
+    }
+  }
+}
+
+.tasks {
+  width: 500px;
+}
+
+h3 {
+  font-weight: 300;
+  margin-top: 20px;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+}
+
+h4 {
+  float: left !important;
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid #C7D4D6;
+  background-color: #E6EDEE;
+  margin-top: 0;
+
+  &:hover {
+    background-color: #DDEAEC;
+  }
+
+  &.close {
+    opacity: 1;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.open {
+    a {
+      background-position: 7px -25px;
+    }
+  }
+
+  a {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 300;
+    color: #333;
+    float: left;
+    width: 100%;
+    text-decoration: none;
+    padding: 5px 10px;
+    padding-left: 25px;
+    padding-top: 10px;
+    background: url("sprite.png") 9px 14px no-repeat;
+    display: block;
+    height: 30px;
+    width: 94%;
+    &:hover {
+      color: #333;
+      text-decoration: none;
+    }
+  }
+}
+
+.active {
+  background-color: #EAF5EA;
+}
+
+ul {
+  padding-left: 10px;
+}
+
+input.name {
+  width: 100%;
+}
+
+.no-projects {
+  display: none;
+}
+
+.include-tab-label {
+  display: none !important;
+}
+
+
+.tasks-container,
+.emails-container {
+  margin-left: 0px;
+}
+
+.tasks-container {
+  ul {
+    list-style-type: none;
+    margin-left: -10px;
+  }
+}
+
+.unread-count {
+  font-weight: 500;
+}
+
+.nav-section {
+  padding-left: 10px !important;
+}
+
+.emails {
+  margin-left: -15px;
+  width: 99%;
+}
+
+.loading {
+  font-weight: 300;
+  position: absolute;
+  left: 35%;
+}
+
+.section {
+  margin-left: 25%;
+}
