@@ -232,13 +232,13 @@ var Jumper = function() {
     e.preventDefault();
     e.stopPropagation();
 
-    if (e.keyCode === 39) {
+    if (e.keyCode === 39 || e.keyCode === 76) {
       this.forward();
-    } else if (e.keyCode === 37) {
+    } else if (e.keyCode === 37 || e.keyCode === 72) {
       this.back();
-    } else if (e.keyCode === 38) {
+    } else if (e.keyCode === 38 || e.keyCode === 75) {
       this.up();
-    } else if (e.keyCode === 40) {
+    } else if (e.keyCode === 40 || e.keyCode === 74) {
       this.down();
     } else if (e.keyCode === 13) {
       this.select();
