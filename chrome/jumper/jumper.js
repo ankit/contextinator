@@ -46,23 +46,19 @@ var Jumper = function() {
 
   this.attachListeners = function() {
     $(document).keydown(_.bind(function(e) {
-      if (e.ctrlKey || e.metaKey) {
+      if (e.metaKey) {
         return true;
       }
 
       var tag = e.target.tagName.toLowerCase();
-      var blacklist = ['input', 'textarea', 'object', 'embed', 'select'];
 
-      if ($.inArray(tag, blacklist) != -1) {
-        return true;
-      }
-
-      // ` is the shortcut to activate the jumper
-      if (e.keyCode === 192) {
+      // Ctrl + ` is the shortcut to activate the jumper
+      if (e.ctrlKey && e.keyCode === 192) {
         this.toggle();
       } else if (e.keyCode == 27) {
         this.hide();
       }
+
     }, this));
   };
 
