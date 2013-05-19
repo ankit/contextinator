@@ -1,6 +1,6 @@
 {
   "name": "Contextinator",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "manifest_version": 2,
   "description": "Browse the Internets around your projects",
 
@@ -16,6 +16,7 @@
       "background/contextmenu.js",
       "background/windows.js",
       "background/apps.js",
+      "background/updates.js",
       "background/background.js"
     ],
 
@@ -67,7 +68,8 @@
     "http://*/",
     "https://*/",
     "unlimitedStorage",
-    "webNavigation"
+    "webNavigation",
+    "notifications"
   ],
 
   "icons": {

@@ -47,6 +47,8 @@ chrome.runtime.onStartup.addListener(function() {
 chrome.runtime.onInstalled.addListener(function(details) {
   if (details.reason === "install") {
     init();
+  } else {
+    checkUpdates();
   }
 });
 
