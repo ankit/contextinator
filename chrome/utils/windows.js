@@ -1,7 +1,9 @@
 // Helpers to manage windows in chrome, including creating, focussing and
 // closing a window
 
-function createWindow(url, callback) {
+var WindowUtils = {};
+
+WindowUtils.create = function (url, callback) {
   if (!callback) {
     callback = function(){};
   }
@@ -36,7 +38,7 @@ function createWindow(url, callback) {
   });
 }
 
-function focusWindow(id, callback) {
+WindowUtils.focus = function (id, callback) {
   if (!callback) {
     callback = function() {};
   }
@@ -52,7 +54,7 @@ function focusWindow(id, callback) {
   chrome.windows.update(id, {focused: true}, callback);
 }
 
-function closeWindow(id, callback) {
+WindowUtils.close = function (id, callback) {
   if (!callback) {
     callback = function() {};
   }
@@ -68,7 +70,7 @@ function closeWindow(id, callback) {
   chrome.windows.remove(id, callback);
 }
 
-function openTabInCurrentWindow(url, index) {
+WindowUtils.openTabInCurrentWindow = function (url, index) {
   if (chrome.windows) {
     chrome.windows.getLastFocused({}, function(aWindow) {
       chrome.tabs.create({

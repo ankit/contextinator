@@ -62,9 +62,9 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
   } else if (request.action === "focusWindow") {
     chrome.windows.update(request.id, {focused: true}, sendResponse);
   } else if (request.action === "createWindow") {
-    createWindow(request.url);
+    WindowUtils.create(request.url);
   } else if (request.action === "openTabInCurrentWindow") {
-    openTabInCurrentWindow(request.url, request.index);
+    WindowUtils.openTabInCurrentWindow(request.url, request.index);
   } else if (request.action === "setBrowserActionIcon") {
     BrowserActionIcon.set(request.project);
     sendResponse({});

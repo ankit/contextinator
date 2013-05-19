@@ -139,7 +139,7 @@ chrome.webNavigation.onCompleted.addListener(function(details) {
   });
 });
 
-// Saves tabs when a tab is activated
+// Save tabs when a tab is activated
 chrome.tabs.onActivated.addListener(function(activeInfo) {
   chrome.tabs.get(activeInfo.tabId, function(tab) {
     saveTabs(activeInfo.windowId, tab, function() {
@@ -148,7 +148,16 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
   });
 });
 
-// Saves tabs when a tab is removed
+// Save tabs when a tab is pinned/unpinned
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
+  if (changeInfo.pinned != undefined) {
+    saveTabs(tab.windowId, tab, function() {
+      sendReloadJumperRequest(tabId);
+    });
+  }
+});
+
+// Save tabs when a tab is removed
 chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
   if (!removeInfo.isWindowClosing) {
     chrome.windows.getCurrent({populate: true}, function(aWindow) {
@@ -272,12 +281,22 @@ function saveTabs(windowId, tab, callback) {
           return;
         }
 
+        var savedTabs = [];
+        _.each(tabs, function(tab) {
+          savedTabs.push({
+            id: tab.id,
+            url: tab.url,
+            title: tab.title,
+            pinned: tab.pinned
+          });
+        });
+
         if (projectIndex != -1) {
-          console.log("Saved tabs for project: " + projects[projectIndex].name);
-          projects[projectIndex].tabs = tabs;
+          console.log("Saving tabs for project: " + projects[projectIndex].name);
+          projects[projectIndex].tabs = savedTabs;
         } else {
-          console.log("Saved tabs for non-project window");
-          temporaryWindows[windowIndex].tabs = tabs;
+          console.log("Saving tabs for non-project window");
+          temporaryWindows[windowIndex].tabs = savedTabs;
         }
 
         // update the thumbnail

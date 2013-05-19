@@ -3,7 +3,7 @@
 // page.
 
 var Projects = {
-  // Adds a new project and makes it the current project
+  // Add a new project and mark it as currently active
   add: function(name, callback) {
     chrome.storage.local.get(null, function(items) {
       var projects = items["projects"];
@@ -28,9 +28,11 @@ var Projects = {
           }
         }
 
-        chrome.storage.local.set({projects: projects,
+        chrome.storage.local.set({
+          projects: projects,
           active: active,
-          temporaryWindows: newSet}, callback);
+          temporaryWindows: newSet
+        }, callback);
 
         BrowserActionIcon.set(project);
         callback();
@@ -38,7 +40,7 @@ var Projects = {
     });
   },
 
-  // Removes a project and closes the project window (if it is open)
+  // Remove a project and close the project window (if it is open)
   remove: function(project, callback) {
     chrome.storage.local.get(null, function(items) {
       var projects = items["projects"];
@@ -68,14 +70,14 @@ var Projects = {
     });
   },
 
-  // Returns all the existing projects
+  // Return all the existing projects
   getAll: function(callback) {
     chrome.storage.local.get("projects", function(items) {
       callback(items["projects"]);
     });
   },
 
-  // Returns the project by its name. If not found, returns null.
+  // Get project by name. If not found, returns null.
   getByName: function(name, callback) {
     chrome.storage.local.get("projects", function(items) {
       var projects = items["projects"];
@@ -92,7 +94,7 @@ var Projects = {
     });
   },
 
-  // gets the temporary window by its id
+  // Get a temporary window by its id
   getTemporaryWindow: function(id, callback) {
     chrome.storage.local.get("temporaryWindows", function(items) {
       var temporaryWindows = items["temporaryWindows"];
@@ -109,7 +111,7 @@ var Projects = {
     });
   },
 
-  // Saves a project.
+  // Save a project
   save: function(project, callback) {
     chrome.storage.local.get("projects", function(items) {
       var projects = items["projects"];
@@ -125,7 +127,7 @@ var Projects = {
     });
   },
 
-  // Saves an app for a project
+  // Save an app for a project
   saveApp: function(projectName, appKey, appUrl, callback) {
     chrome.storage.local.get("projects", function(items) {
       var projects = items["projects"];
@@ -145,7 +147,7 @@ var Projects = {
     });
   },
 
-  // Makes the specified object as currently active
+  // Mark the specified project/window as active
   setActive: function(project, windowId, callback) {
     if (project == null) {
       chrome.storage.local.remove("active");
@@ -179,7 +181,7 @@ var Projects = {
     });
   },
 
-  // Open or focuses a project window or non-project window
+  // Open or focus a project window or non-project window
   open: function(project, showHomepage, url, callback) {
     if (!callback) {
       callback = function() {};
@@ -188,7 +190,7 @@ var Projects = {
     // if it is an existing window.
     if (project.height != undefined) {
       console.log("Switched to non-project window");
-      focusWindow(project.id, callback);
+      WindowUtils.focus(project.id, callback);
       return true;
     }
 
@@ -198,7 +200,7 @@ var Projects = {
 
       if (showHomepage) {
         Projects.openHomepage(project, function() {
-          focusWindow(project.windowId, callback);
+          WindowUtils.focus(project.windowId, callback);
         });
       } else {
         if (url) {
@@ -207,10 +209,10 @@ var Projects = {
             active: true,
             windowId: project.windowId
           }, function() {
-            focusWindow(project.windowId, callback);
+            WindowUtils.focus(project.windowId, callback);
           });
         } else {
-          focusWindow(project.windowId, callback);
+          WindowUtils.focus(project.windowId, callback);
         }
       }
 
@@ -221,32 +223,25 @@ var Projects = {
       console.log("Creating new window for project: " + project.name);
       chrome.storage.local.set({"openingWindowType": 3});
 
-      var urls = [];
+      var tabs = [];
       var foundHomepage = false;
       var homepageURL = "chrome-extension://" +
         chrome.i18n.getMessage("@@extension_id") +
         "/home/home.html";
 
-      // if previously tabs were open, reload them
-      if (project.tabs) {
-        var len = project.tabs.length;
-        for (var i = 0; i < len; i++) {
-          if (homepageURL == project.tabs[i].url) {
-            foundHomepage = true;
-          }
+      var urls = [];
 
-          urls.push(project.tabs[i].url);
-        }
-
-        if (!foundHomepage) {
-          urls.unshift(homepageURL);
-        }
-      } else {
-        urls.push(homepageURL);
+      var tabs = project.tabs;
+      var len = tabs.length;
+      for (var i = 0; i < len; i++) {
+        var tab = tabs[i];
+        urls.push(tab.url);
       }
 
       Projects.setActive(project, null, function() {
-        createWindow(urls, callback);
+        WindowUtils.create(urls, function(newWindow) {
+          callback();
+        });
       });
     }
   },
@@ -257,14 +252,11 @@ var Projects = {
       return;
     }
 
-    if (project.windowId) {
-      closeWindow(project.windowId);
-    } else{
-      closeWindow(project.id);
-    }
+    var windowId = project.windowId ? project.windowId : project.id;
+    WindowUtils.close(windowId);
   },
 
-  // Focusses (or opens) the homepage for the currently active project
+  // Focus (or open) the homepage for the currently active project
   openHomepage: function(project, callback) {
     if (!callback) {
       callback = function(){};
@@ -294,7 +286,7 @@ var Projects = {
     }
   },
 
-  // Associates the currently active window with the specified project
+  // Associate the currently active window with the specified project
   setCurrentWindow: function(project, callback) {
     chrome.windows.getCurrent(function(aWindow) {
       project.windowId = aWindow.id;
@@ -304,14 +296,17 @@ var Projects = {
     });
   },
 
+  // Open a new window to start a new project
   openNewProject: function() {
-    createWindow("../new/new.html");
+    WindowUtils.create("../new/new.html");
   },
 
+  // Open a tab to start a new project in the currently active window
   openNewProjectForCurrentWindow: function() {
-    openTabInCurrentWindow("../new/new.html", 0);
+    WindowUtils.openTabInCurrentWindow("../new/new.html", 0);
   },
 
+  // Open / focus the Projects Overview window
   openOverview: function(callback) {
     if (!callback) {
       callback = function(){};
@@ -323,9 +318,9 @@ var Projects = {
       // see background.js
       chrome.storage.local.set({"openingWindowType": 2}, function() {
         if (windowId) {
-          focusWindow(windowId, callback);
+          WindowUtils.focus(windowId, callback);
         } else {
-          createWindow("overview/overview.html", callback);
+          WindowUtils.create("overview/overview.html", callback);
         }
       });
     });
