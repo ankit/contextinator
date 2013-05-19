@@ -23,7 +23,7 @@
   },
 
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*"],
+    "matches": ["<all_urls>"],
 
     "js": [
       "lib/underscore.js",
@@ -45,12 +45,12 @@
 
     "css": [
       "lib/dropdown.css",
-      "jumper/jumper.css",
-      "content/content.css"
+      "content/content.css",
+      "jumper/jumper.css"
     ],
 
     "run_at": "document_start",
-    "all_frames": false
+    "all_frames": true
   }],
 
   "browser_action": {

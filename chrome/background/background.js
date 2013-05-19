@@ -76,5 +76,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     BrowserActionIcon.disableBadgeText();
     sendResponse({});
   }
+
   return true;
 });

@@ -42,6 +42,14 @@ var Jumper = function() {
       'toggle');
 
     this.attachListeners();
+
+    // Hack: Appending an empty <style> element
+    // fixes https://github.com/ankit/contextinator/issues/9
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.setAttribute('id', "contextinator-jumper");
+    style.appendChild(document.createTextNode(""));
+    document.documentElement.appendChild(style);
   };
 
   this.attachListeners = function() {
@@ -58,7 +66,6 @@ var Jumper = function() {
       } else if (e.keyCode == 27) {
         this.hide();
       }
-
     }, this));
   };
 
