@@ -163,7 +163,6 @@ var Projects = {
       for (var i = 0; i < len; i++) {
         if (project.name == projects[i].name) {
           projects[i].lastAccessed = new Date().getTime();
-          BrowserActionIcon.set(project);
 
           if (windowId) {
             projects[i].windowId = windowId;

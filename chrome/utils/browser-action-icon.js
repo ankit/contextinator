@@ -1,6 +1,7 @@
-// Enables/disables and sets the text for the browser action icon
-
+// Update the state of the browser action icon
 var BrowserActionIcon = {
+  // Set the browser action for specified project
+  // Update the text, title and color
   set: function (project) {
     if (!chrome.browserAction) {
       chrome.extension.sendMessage({
@@ -13,11 +14,11 @@ var BrowserActionIcon = {
     var title, text, color;
 
     if (!project) {
-      title = "You're not in a project";
+      title = "You are not in a project";
       text = "None";
       color = "#000";
     } else {
-      title = "You're in the " + project.name + " project";
+      title = "You are in the " + project.name + " project";
       text = project.name;
       color = "#91BD83";
     }
@@ -35,6 +36,8 @@ var BrowserActionIcon = {
     });
   },
 
+  // Disable the browser action so that it is not clickable.
+  // Set the text to "...", title and color to indicate loading state
   disable: function() {
     if (!chrome.browserAction) {
       chrome.extension.sendMessage({
@@ -43,9 +46,20 @@ var BrowserActionIcon = {
       return;
     }
 
+    chrome.browserAction.setBadgeText({
+      text: "..."
+    });
+    chrome.browserAction.setTitle({
+      title: "Loading..."
+    });
+    chrome.browserAction.setBadgeBackgroundColor({
+      color: "#04859D"
+    });
+
     chrome.browserAction.disable();
   },
 
+  // Enable the browser action to make it clickable
   enable: function() {
     if (!chrome.browserAction) {
       chrome.extension.sendMessage({
@@ -55,18 +69,5 @@ var BrowserActionIcon = {
     }
 
     chrome.browserAction.enable();
-  },
-
-  disableBadgeText: function() {
-    if (!chrome.browserAction) {
-      chrome.extension.sendMessage({
-        action: "disableBrowserActionIconText"
-      });
-      return;
-    }
-
-    chrome.browserAction.setBadgeText({
-      text: ""
-    });
   }
 }

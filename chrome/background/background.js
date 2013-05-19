@@ -1,5 +1,4 @@
 function init() {
-  BrowserActionIcon.disableBadgeText();
   BrowserActionIcon.disable();
 
   // This keep tracks of the current window type that is being opened.
@@ -73,9 +72,6 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
     sendResponse({});
   } else if (request.action === "enableBrowserActionIcon") {
     BrowserActionIcon.enable();
-    sendResponse({});
-  } else if (request.action === "disableBrowserActionIconText") {
-    BrowserActionIcon.disableBadgeText();
     sendResponse({});
   }
 

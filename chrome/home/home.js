@@ -67,17 +67,6 @@ var NewTab = function() {
         chrome.i18n.getMessage("@@extension_id") +
         "/home/home.html";
 
-      // Bring back the pinned state of tabs
-      chrome.windows.getCurrent({populate: true}, function(currentWindow) {
-        var len = project.tabs.length;
-        for (var i = 0; i < len; i++) {
-          var tab = project.tabs[i];
-          if (tab.pinned) {
-            chrome.tabs.update(currentWindow.tabs[i].id, {pinned: true});
-          }
-        }
-      });
-
       var onWindowIdLoad = function() {
         jumper.load();
         $('.delete-btn, .close-btn').removeClass('disabled')

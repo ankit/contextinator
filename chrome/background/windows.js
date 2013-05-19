@@ -51,7 +51,24 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
         "openingWindowType": 0
       });
 
+      var project = projects[active];
+
+      // Update browser action
       BrowserActionIcon.enable();
+      BrowserActionIcon.set(project);
+
+      // Bring back the pinned state of tabs
+      chrome.windows.getCurrent({populate: true}, function(currentWindow) {
+        var len = project.tabs.length;
+        for (var i = 0; i < len; i++) {
+          var tab = project.tabs[i];
+          if (tab.pinned) {
+            console.log("PINNING TAB");
+            chrome.tabs.update(currentWindow.tabs[i].id, {pinned: true});
+          }
+        }
+      });
+
       chrome.storage.local.set({"lastFocusedWindowId": windowId});
       return;
     }
