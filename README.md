@@ -1,6 +1,11 @@
 # Contextinator
 
-Divide your web browsing sessions into projects and manage all of their related information.
+Organize your web browsing into projects and manage all of their related information.
+
+## How to contribute?
+
+Look up the [Issues](https://github.com/ankit/contextinator/issues) to see things that need to be fixed or feature ideas.
+Else, go ahead and implement your crazy ideas!
 
 ## Setting up Development Environment:
 
@@ -25,11 +30,6 @@ Divide your web browsing sessions into projects and manage all of their related 
     * `/jumper`: Quick Switcher
     * `/home`: Project Homepage
     * `/overview`: Projects Overview
-
-## How to contribute?
-
-Go ahead and implement your crazy ideas!
-If you don't have one, look up the Issues to see things that need to be fixed or feature ideas.
 
 ## License
 
