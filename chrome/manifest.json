@@ -1,6 +1,6 @@
 {
   "name": "Contextinator",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "manifest_version": 2,
   "description": "Browse the Internets around your projects",
 
@@ -17,7 +17,6 @@
       "background/windows.js",
       "background/apps.js",
       "background/updates.js",
-      "background/sync.js",
       "background/background.js"
     ],
 
@@ -52,7 +51,7 @@
     ],
 
     "run_at": "document_start",
-    "all_frames": true
+    "all_frames": false
   }],
 
   "browser_action": {
