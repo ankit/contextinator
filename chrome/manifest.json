@@ -17,6 +17,7 @@
       "background/windows.js",
       "background/apps.js",
       "background/updates.js",
+      "background/sync.js",
       "background/background.js"
     ],
 

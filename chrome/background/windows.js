@@ -63,7 +63,6 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
         for (var i = 0; i < len; i++) {
           var tab = project.tabs[i];
           if (tab.pinned) {
-            console.log("PINNING TAB");
             chrome.tabs.update(currentWindow.tabs[i].id, {pinned: true});
           }
         }
