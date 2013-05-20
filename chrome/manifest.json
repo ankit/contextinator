@@ -12,6 +12,7 @@
       "utils/windows.js",
       "utils/browser-action-icon.js",
       "utils/bookmarks.js",
+      "utils/projects.js",
 
       "background/contextmenu.js",
       "background/windows.js",

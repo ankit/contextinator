@@ -325,7 +325,7 @@ var Projects = {
     });
   },
 
-  // Closes the overview window, if it exists
+  // Close the overview window, if it exists
   closeOverview: function() {
     chrome.storage.local.get("overviewWindowId", function(items) {
       if (items['overviewWindowId']) {
@@ -338,6 +338,34 @@ var Projects = {
           });
         }
       }
+    });
+  },
+
+  // Send tab to a project
+  sendTab: function(tab, destinationProjectName) {
+    chrome.tabs.remove(tab.id, function() {
+      chrome.storage.local.get("projects", function(items) {
+        var projects = items["projects"];
+        _.each(projects, function(project, index) {
+          if (destinationProjectName === project.name) {
+            if (project.windowId) {
+              chrome.tabs.create({
+                windowId: project.windowId,
+                url: tab.url,
+                pinned: tab.pinned,
+                active: false
+              });
+            } else {
+              projects[index].tabs.push({
+                url: tab.url,
+                pinned: tab.pinned
+              });
+              chrome.storage.local.set({"projects": projects});
+              return;
+            }
+          }
+        });
+      });
     });
   }
 }

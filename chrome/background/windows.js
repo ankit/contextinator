@@ -12,7 +12,6 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
   }
 
   BrowserActionIcon.disable();
-  updateContextMenu();
 
   chrome.storage.local.get(null, function(items) {
     var active = items["active"];
@@ -38,6 +37,7 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
       chrome.storage.local.remove("active");
       reloadJumperForWindow(windowId);
       chrome.storage.local.set({"lastFocusedWindowId": windowId});
+      ContextMenu.update();
       return;
     }
 
@@ -69,6 +69,7 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
       });
 
       chrome.storage.local.set({"lastFocusedWindowId": windowId});
+      ContextMenu.update();
       return;
     }
 
@@ -84,6 +85,7 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
         console.log("Setting project as active: " + projects[i].name);
         chrome.storage.local.set({"active": i, projects: projects}, function() {
           reloadJumperForWindow(windowId);
+          ContextMenu.update();
         });
 
         if (lastFocusedWindowId != windowId) {
@@ -130,6 +132,8 @@ chrome.windows.onFocusChanged.addListener(function(windowId) {
         if (lastFocusedWindowId != windowId) {
           chrome.storage.local.set({"lastFocusedWindowId": windowId});
         }
+
+        ContextMenu.update();
       }
 
       BrowserActionIcon.set(null);
