@@ -298,8 +298,10 @@ var NewTab = function() {
     });
   };
 
-  // Send request to close a project
+  // Send request to close project
   this.close = function(e) {
+    var $btn = $(e.target);
+    $btn.addClass('disabled').html('Closing...');
     chrome.storage.local.get(["projects", "active"], function(items) {
       var projects = items["projects"];
       var project = projects[items["active"]];
