@@ -1,3 +1,5 @@
+Note: I am currently not actively developing/supporting this project.
+
 # Contextinator
 
 Organize your web browsing into projects and manage all of their related information.
