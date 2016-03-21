@@ -1,4 +1,4 @@
-Note: I am currently not actively developing/supporting this project.
+Note: I am currently not actively developing this project.
 
 # Contextinator
 
